@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { List, Card } from "antd";
 
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
@@ -19,13 +20,15 @@ const { Meta } = Card;
 
 export const MediaList = ({ mediaType }: MediaListProps) => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const loading = useAppSelector(loadingSelector);
   const movies = useAppSelector(allMoviesSelector);
   const tvShows = useAppSelector(allTvShowsSelector);
 
-  const onClickHandler = (id?: number) => {
+  const onClickHandler = (id?: number, title?: string) => {
     dispatch(getMediaDetailsAsync({ mediaType, id }));
     dispatch(getSimilarMediaAsync({ mediaType, id }));
+    navigate(`/${title}`);
   };
   return (
     <div>
@@ -36,7 +39,10 @@ export const MediaList = ({ mediaType }: MediaListProps) => {
           grid={GRID_OPTIONS}
           dataSource={mediaType === MediaTypes.MOVIE ? movies : tvShows}
           renderItem={(media: Media) => (
-            <List.Item key={media.id} onClick={() => onClickHandler(media.id)}>
+            <List.Item
+              key={media.id}
+              onClick={() => onClickHandler(media.id, media.title)}
+            >
               <Card
                 hoverable
                 className="card"
