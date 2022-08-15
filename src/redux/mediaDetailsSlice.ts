@@ -90,7 +90,7 @@ export const selector = (state: RootState) => state.details;
 export const mediaDetailsSelector = (state: RootState) =>
   selector(state).selectedMediaDetails;
 export const similarMediaSelector = (state: RootState) =>
-  selector(state).selectedMediaDetails;
+  selector(state).similarMedia;
 export const loadingSelector = (state: RootState) => selector(state).loading;
 export const loadingSimilarSelector = (state: RootState) =>
   selector(state).loading;
