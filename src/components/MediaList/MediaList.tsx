@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { List, Card } from "antd";
 
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
@@ -12,13 +13,14 @@ import {
   getSimilarMediaAsync,
 } from "../../redux/mediaDetailsSlice";
 import { Media, MediaTypes } from "../../types/Media";
-import { MediaListProps } from "./MediaList.types";
 import { BASE_IMAGE_URL, GRID_OPTIONS } from "./MediaList.constants";
+import { MediaListProps } from "./MediaList.types";
 
 const { Meta } = Card;
 
 export const MediaList = ({ mediaType }: MediaListProps) => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const loading = useAppSelector(loadingSelector);
   const movies = useAppSelector(allMoviesSelector);
   const tvShows = useAppSelector(allTvShowsSelector);
@@ -26,6 +28,7 @@ export const MediaList = ({ mediaType }: MediaListProps) => {
   const onClickHandler = (id?: number) => {
     dispatch(getMediaDetailsAsync({ mediaType, id }));
     dispatch(getSimilarMediaAsync({ mediaType, id }));
+    navigate(`/${id}`);
   };
   return (
     <div>
