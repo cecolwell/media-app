@@ -19,7 +19,6 @@ export const MediaTabs = () => {
     <Tabs
       size="large"
       defaultActiveKey={MOVIES_TAB.key}
-      type="card"
       onTabClick={() => dispatch(clearSelectedMovie())}
     >
       <TabPane tab={MOVIES_TAB.label} key={MOVIES_TAB.key}>

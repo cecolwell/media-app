@@ -1,6 +1,33 @@
 @import "~antd/dist/antd.css";
 
-.App {
+.header {
+  display: flex;
+  background-color: #0d253f;
+  justify-content: center;
   text-align: center;
-  padding: 20px;
+  height: 100px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  align-items: center;
+}
+
+.content {
+  margin: 24px 16px 0;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+.footerText {
+  margin-left: 15px;
+}
+
+a {
+  color: #01b4e4;
+  margin-left: 5px;
 }
