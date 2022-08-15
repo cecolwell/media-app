@@ -13,8 +13,8 @@ import {
   getSimilarMediaAsync,
 } from "../../redux/mediaDetailsSlice";
 import { Media, MediaTypes } from "../../types/Media";
-import { MediaListProps } from "./MediaList.types";
 import { BASE_IMAGE_URL, GRID_OPTIONS } from "./MediaList.constants";
+import { MediaListProps } from "./MediaList.types";
 
 const { Meta } = Card;
 
@@ -25,10 +25,10 @@ export const MediaList = ({ mediaType }: MediaListProps) => {
   const movies = useAppSelector(allMoviesSelector);
   const tvShows = useAppSelector(allTvShowsSelector);
 
-  const onClickHandler = (id?: number, title?: string) => {
+  const onClickHandler = (id?: number) => {
     dispatch(getMediaDetailsAsync({ mediaType, id }));
     dispatch(getSimilarMediaAsync({ mediaType, id }));
-    navigate(`/${title}`);
+    navigate(`/${id}`);
   };
   return (
     <div>
@@ -39,10 +39,7 @@ export const MediaList = ({ mediaType }: MediaListProps) => {
           grid={GRID_OPTIONS}
           dataSource={mediaType === MediaTypes.MOVIE ? movies : tvShows}
           renderItem={(media: Media) => (
-            <List.Item
-              key={media.id}
-              onClick={() => onClickHandler(media.id, media.title)}
-            >
+            <List.Item key={media.id} onClick={() => onClickHandler(media.id)}>
               <Card
                 hoverable
                 className="card"

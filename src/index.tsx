@@ -16,7 +16,7 @@ root.render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />} />
-          <Route path="/:title" element={<MediaDetails />} />
+          <Route path="/:id" element={<MediaDetails />} />
         </Routes>
       </BrowserRouter>
     </Provider>
