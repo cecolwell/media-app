@@ -13,8 +13,13 @@ import {
   getSimilarMediaAsync,
 } from "../../redux/mediaDetailsSlice";
 import { Media, MediaTypes } from "../../types/Media";
-import { BASE_IMAGE_URL, GRID_OPTIONS } from "./MediaList.constants";
+import {
+  BASE_IMAGE_URL,
+  LIST_IMAGE_WIDTH,
+  GRID_OPTIONS,
+} from "./MediaList.constants";
 import { MediaListProps } from "./MediaList.types";
+import { convertRatingToPercentage } from "./MediaList.utils";
 
 const { Meta } = Card;
 
@@ -46,11 +51,14 @@ export const MediaList = ({ mediaType }: MediaListProps) => {
                 cover={
                   <img
                     alt={media.title}
-                    src={`${BASE_IMAGE_URL}${media.poster_path}`}
+                    src={`${BASE_IMAGE_URL}${LIST_IMAGE_WIDTH}${media.poster_path}`}
                   />
                 }
               >
-                <Meta title={media.title} description={media.vote_average} />
+                <Meta
+                  title={media.title}
+                  description={convertRatingToPercentage(media.vote_average)}
+                />
               </Card>
             </List.Item>
           )}

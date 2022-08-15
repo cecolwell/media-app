@@ -9,10 +9,13 @@ export interface Media {
   vote_average?: number;
   id?: number;
   backdrop_path?: string;
+  release_date: string;
 }
 
 export interface MediaDetails extends Media {
   overview?: string;
+  tagline: string;
+  release_date: string;
 }
 
 export interface MediaApiModel {
@@ -23,4 +26,6 @@ export interface MediaApiModel {
   title?: string;
   vote_average?: number;
   name?: string;
+  tagline: string;
+  release_date: string;
 }

@@ -21,6 +21,8 @@ export const initialState: MediaDetailsState = {
     backdrop_path: "",
     vote_average: undefined,
     overview: "",
+    tagline: "",
+    release_date: "",
   },
   similarMedia: [],
   similarLoading: false,
@@ -90,5 +92,7 @@ export const mediaDetailsSelector = (state: RootState) =>
 export const similarMediaSelector = (state: RootState) =>
   selector(state).selectedMediaDetails;
 export const loadingSelector = (state: RootState) => selector(state).loading;
+export const loadingSimilarSelector = (state: RootState) =>
+  selector(state).loading;
 
 export default mediaDetailsSlice.reducer;
