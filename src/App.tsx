@@ -1,7 +1,9 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 import { Layout } from "antd";
+
+import { MainMenu } from "./components/MainMenu/MainMenu";
 import "./App.css";
-import { MediaTabs } from "./components/MediaTabs/MediaTabs";
 
 const { Header, Footer, Content } = Layout;
 
@@ -9,9 +11,11 @@ function App() {
   return (
     <div className="App">
       <Layout>
-        <Header className="header">Popular Now</Header>
+        <Header className="header">
+          Popular Now <MainMenu />
+        </Header>
         <Content className="content">
-          <MediaTabs />
+          <Outlet />
         </Content>
         <Footer className="footer">
           <img

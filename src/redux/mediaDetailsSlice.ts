@@ -3,7 +3,7 @@ import { RootState } from "./store";
 
 import { fetchMedia, fetchSimilarMedia } from "../api/media";
 import { toDetailsView, toListView } from "../api/transformers";
-import { MediaDetails, MediaTypes, Media } from "../types/Media";
+import { MediaDetails, MediaType, Media } from "../types/Media";
 
 export interface MediaDetailsState {
   loading: boolean;
@@ -31,7 +31,7 @@ export const initialState: MediaDetailsState = {
 // will call the thunk with the `dispatch` function as the first argument.
 export const getMediaDetailsAsync = createAsyncThunk(
   "mediaDetails/fetchMediaDetails",
-  async ({ mediaType, id }: { mediaType: MediaTypes; id?: number }) => {
+  async ({ mediaType, id }: { mediaType: MediaType; id?: number }) => {
     const mediaDetailsResponse = await fetchMedia(mediaType, id);
     // The value we return becomes the `fulfilled` action payload
     const transformedMediaDetails = toDetailsView(mediaDetailsResponse.data);
@@ -41,7 +41,7 @@ export const getMediaDetailsAsync = createAsyncThunk(
 
 export const getSimilarMediaAsync = createAsyncThunk(
   "mediaDetails/fetchSimilarMedia",
-  async ({ mediaType, id }: { mediaType: MediaTypes; id?: number }) => {
+  async ({ mediaType, id }: { mediaType: MediaType; id?: number }) => {
     const mediaResponse = await fetchSimilarMedia(mediaType, id);
     // The value we return becomes the `fulfilled` action payload
     const transformedSimilarMedia = toListView(mediaResponse.data.results);
