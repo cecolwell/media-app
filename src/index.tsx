@@ -2,8 +2,10 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
+
 import { store } from "./redux/store";
 import { MediaDetails } from "./components/MediaList/MediaDetails/MediaDetails";
+import { MediaList } from "./components/MediaList/MediaList";
 import App from "./App";
 import "./index.css";
 
@@ -15,9 +17,12 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route path="/movies" element={<App />} />
-          <Route path="/:media" element={<App />} />
-          <Route path="/:media/:id" element={<MediaDetails />} />
+          <Route path="/" element={<App />}>
+            <Route index element={<MediaList />} />
+            <Route path="movies" element={<MediaList />} />
+            <Route path="tv" element={<MediaList />} />
+            <Route path=":id" element={<MediaDetails />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </Provider>

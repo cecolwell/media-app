@@ -10,7 +10,8 @@ export const TVSHOWS_TAB = {
   key: MediaTypes.TVSHOW,
 };
 
-export const TAB_BAR_STYLE = {
-  marginBottom: 0,
-  paddingTop: 9,
+export const MENU_STYLES = {
+  backgroundColor: "#0d253f",
+  color: "white",
+  borderBottom: 0,
 };

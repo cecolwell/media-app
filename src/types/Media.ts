@@ -1,8 +1,14 @@
-export enum MediaTypes {
-  MOVIE = "movies",
-  TVSHOW = "tv",
-}
+// export enum MediaTypes {
+//   MOVIE = "movies",
+//   TVSHOW = "tv",
+// }
 
+export const MediaTypes = {
+  MOVIE: "movies",
+  TVSHOW: "tv",
+} as const;
+
+export type MediaType = typeof MediaTypes[keyof typeof MediaTypes];
 export interface Media {
   poster_path?: string;
   title?: string;
