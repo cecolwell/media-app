@@ -38,6 +38,8 @@ export const MainMenu = () => {
       setCurrent(" ");
     } else if (!pathname) {
       setCurrent(MOVIES_TAB.key);
+    } else {
+      setCurrent(pathname);
     }
   }, [pathname]);
 

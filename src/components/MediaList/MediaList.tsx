@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { List, Card } from "antd";
 
@@ -11,6 +11,7 @@ import {
 import {
   getMediaDetailsAsync,
   getSimilarMediaAsync,
+  clearMediaDetails,
 } from "../../redux/mediaDetailsSlice";
 import {
   BASE_IMAGE_URL,
@@ -29,6 +30,10 @@ export const MediaList = () => {
   const movies = useAppSelector(allMoviesSelector);
   const tvShows = useAppSelector(allTvShowsSelector);
   let pathname = useLocation().pathname.slice(1) as MediaType;
+
+  useEffect(() => {
+    dispatch(clearMediaDetails());
+  });
 
   const onClickHandler = (id?: number) => {
     dispatch(getMediaDetailsAsync({ mediaType: pathname, id }));

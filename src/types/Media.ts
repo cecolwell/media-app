@@ -15,13 +15,12 @@ export interface Media {
   vote_average?: number;
   id?: number;
   backdrop_path?: string;
-  release_date: string;
 }
 
 export interface MediaDetails extends Media {
   overview?: string;
   tagline: string;
-  release_date: string;
+  release_date?: string;
 }
 
 export interface MediaApiModel {
@@ -33,5 +32,6 @@ export interface MediaApiModel {
   vote_average?: number;
   name?: string;
   tagline: string;
-  release_date: string;
+  release_date?: string;
+  first_air_date?: string;
 }

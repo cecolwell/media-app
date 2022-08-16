@@ -7,7 +7,6 @@ export const toMediaModel = (media: MediaApiModel): Media => {
     vote_average: media.vote_average,
     id: media.id,
     backdrop_path: media.backdrop_path,
-    release_date: media.release_date,
   };
 };
 
@@ -25,6 +24,6 @@ export const toDetailsView = (media: MediaApiModel): MediaDetails => {
     backdrop_path: media.backdrop_path,
     overview: media.overview,
     tagline: media.tagline,
-    release_date: media.release_date,
+    release_date: media.release_date ?? media.first_air_date,
   };
 };

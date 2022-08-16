@@ -16,6 +16,6 @@ export const getRatingBadgeColor = (rating?: number) => {
   }
 };
 
-export const getReleaseYear = (releaseDate: string) => {
-  return releaseDate.split("-")[0];
+export const getReleaseYear = (releaseDate?: string) => {
+  return releaseDate?.split("-")[0];
 };
