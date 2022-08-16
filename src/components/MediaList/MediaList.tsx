@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { List, Card } from "antd";
 
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
@@ -12,27 +12,27 @@ import {
   getMediaDetailsAsync,
   getSimilarMediaAsync,
 } from "../../redux/mediaDetailsSlice";
-import { Media, MediaTypes } from "../../types/Media";
 import {
   BASE_IMAGE_URL,
   LIST_IMAGE_WIDTH,
   GRID_OPTIONS,
 } from "./MediaList.constants";
-import { MediaListProps } from "./MediaList.types";
 import { convertRatingToPercentage } from "./MediaList.utils";
+import { Media, MediaType, MediaTypes } from "../../types/Media";
 
 const { Meta } = Card;
 
-export const MediaList = ({ mediaType }: MediaListProps) => {
+export const MediaList = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const loading = useAppSelector(loadingSelector);
   const movies = useAppSelector(allMoviesSelector);
   const tvShows = useAppSelector(allTvShowsSelector);
+  let pathname = useLocation().pathname.slice(1) as MediaType;
 
   const onClickHandler = (id?: number) => {
-    dispatch(getMediaDetailsAsync({ mediaType, id }));
-    dispatch(getSimilarMediaAsync({ mediaType, id }));
+    dispatch(getMediaDetailsAsync({ mediaType: pathname, id }));
+    dispatch(getSimilarMediaAsync({ mediaType: pathname, id }));
     navigate(`/${id}`);
   };
   return (
@@ -42,7 +42,9 @@ export const MediaList = ({ mediaType }: MediaListProps) => {
       ) : (
         <List
           grid={GRID_OPTIONS}
-          dataSource={mediaType === MediaTypes.MOVIE ? movies : tvShows}
+          dataSource={
+            pathname === MediaTypes.MOVIE || !pathname ? movies : tvShows
+          }
           renderItem={(media: Media) => (
             <List.Item key={media.id} onClick={() => onClickHandler(media.id)}>
               <Card

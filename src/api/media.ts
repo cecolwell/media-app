@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { MediaTypes } from "../types/Media";
+import { MediaType, MediaTypes } from "../types/Media";
 import { LOCAL_HOST_PATH, MEDIA_API_ROUTES } from "./constants";
 
 export const fetchAllMovies = (): any => {
@@ -10,7 +10,7 @@ export const fetchAllTvShows = (): any => {
   return axios.request({ url: `${LOCAL_HOST_PATH}allTvShows` });
 };
 
-export const fetchMedia = (mediaType: MediaTypes, id?: number): any => {
+export const fetchMedia = (mediaType: MediaType, id?: number): any => {
   const route =
     mediaType === MediaTypes.MOVIE
       ? MEDIA_API_ROUTES.MOVIE
@@ -21,7 +21,7 @@ export const fetchMedia = (mediaType: MediaTypes, id?: number): any => {
   });
 };
 
-export const fetchSimilarMedia = (mediaType: MediaTypes, id?: number): any => {
+export const fetchSimilarMedia = (mediaType: MediaType, id?: number): any => {
   const route =
     mediaType === MediaTypes.MOVIE
       ? MEDIA_API_ROUTES.SIMILAR_MOVIES
