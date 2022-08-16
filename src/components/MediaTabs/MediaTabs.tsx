@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Tabs } from "antd";
 
 import { useAppDispatch } from "../../redux/hooks";
@@ -12,14 +13,21 @@ const { TabPane } = Tabs;
 
 export const MediaTabs = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   useEffect(() => {
     dispatch(getAllMediaAsync());
   });
+
+  const onTabClickHandler = (key: string) => {
+    dispatch(clearSelectedMovie());
+    navigate(`/${key}`);
+  };
   return (
     <Tabs
       size="large"
       defaultActiveKey={MOVIES_TAB.key}
-      onTabClick={() => dispatch(clearSelectedMovie())}
+      onTabClick={(key: string) => onTabClickHandler(key)}
     >
       <TabPane tab={MOVIES_TAB.label} key={MOVIES_TAB.key}>
         <MediaList mediaType={MediaTypes.MOVIE} />

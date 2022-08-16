@@ -28,7 +28,7 @@ export const MediaList = ({ mediaType }: MediaListProps) => {
   const onClickHandler = (id?: number) => {
     dispatch(getMediaDetailsAsync({ mediaType, id }));
     dispatch(getSimilarMediaAsync({ mediaType, id }));
-    navigate(`/${id}`);
+    navigate(`/${mediaType}/${id}`);
   };
   return (
     <div>

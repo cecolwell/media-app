@@ -1,11 +1,13 @@
+import { MediaTypes } from "../../types/Media";
+
 export const MOVIES_TAB = {
   label: "Movies",
-  key: "movies-tab",
+  key: MediaTypes.MOVIE,
 };
 
 export const TVSHOWS_TAB = {
   label: "TV Shows",
-  key: "tvShows-tab",
+  key: MediaTypes.TVSHOW,
 };
 
 export const TAB_BAR_STYLE = {

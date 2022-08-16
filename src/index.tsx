@@ -15,8 +15,9 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/:id" element={<MediaDetails />} />
+          <Route path="/movies" element={<App />} />
+          <Route path="/:media" element={<App />} />
+          <Route path="/:media/:id" element={<MediaDetails />} />
         </Routes>
       </BrowserRouter>
     </Provider>
