@@ -7,7 +7,6 @@ import { store } from "./redux/store";
 import { MediaDetails } from "./components/MediaList/MediaDetails/MediaDetails";
 import { MediaList } from "./components/MediaList/MediaList";
 import App from "./App";
-import "./index.css";
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);

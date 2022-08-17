@@ -23,5 +23,7 @@ export const toDetailsView = (media: MediaApiModel): MediaDetails => {
     id: media.id,
     backdrop_path: media.backdrop_path,
     overview: media.overview,
+    tagline: media.tagline,
+    release_date: media.release_date ?? media.first_air_date,
   };
 };

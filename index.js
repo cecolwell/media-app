@@ -80,7 +80,7 @@ app.get("/similarTvShows", async (req, res) => {
   const tvShow_id = req.query.id;
   axios
     .request(
-      `https://api.themoviedb.org/3/movie/${tvShow_id}/similar?api_key=${API_KEY}&language=en-US&page=1`
+      `https://api.themoviedb.org/3/tv/${tvShow_id}/similar?api_key=${API_KEY}&language=en-US&page=1`
     )
     .then((response) => {
       res.json(response.data);

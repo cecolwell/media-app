@@ -21,6 +21,8 @@ export const initialState: MediaDetailsState = {
     backdrop_path: "",
     vote_average: undefined,
     overview: "",
+    tagline: "",
+    release_date: "",
   },
   similarMedia: [],
   similarLoading: false,
@@ -42,6 +44,7 @@ export const getMediaDetailsAsync = createAsyncThunk(
 export const getSimilarMediaAsync = createAsyncThunk(
   "mediaDetails/fetchSimilarMedia",
   async ({ mediaType, id }: { mediaType: MediaType; id?: number }) => {
+    console.log("mediaType", mediaType);
     const mediaResponse = await fetchSimilarMedia(mediaType, id);
     // The value we return becomes the `fulfilled` action payload
     const transformedSimilarMedia = toListView(mediaResponse.data.results);
@@ -54,7 +57,7 @@ export const mediaDetailsSlice = createSlice({
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
-    clearSelectedMovie: (state) => {
+    clearMediaDetails: (state) => {
       state.selectedMediaDetails = initialState.selectedMediaDetails;
       state.similarMedia = initialState.similarMedia;
     },
@@ -80,7 +83,7 @@ export const mediaDetailsSlice = createSlice({
   },
 });
 
-export const { clearSelectedMovie } = mediaDetailsSlice.actions;
+export const { clearMediaDetails } = mediaDetailsSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state.
@@ -88,7 +91,9 @@ export const selector = (state: RootState) => state.details;
 export const mediaDetailsSelector = (state: RootState) =>
   selector(state).selectedMediaDetails;
 export const similarMediaSelector = (state: RootState) =>
-  selector(state).selectedMediaDetails;
+  selector(state).similarMedia;
 export const loadingSelector = (state: RootState) => selector(state).loading;
+export const loadingSimilarSelector = (state: RootState) =>
+  selector(state).loading;
 
 export default mediaDetailsSlice.reducer;

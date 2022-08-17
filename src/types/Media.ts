@@ -19,6 +19,8 @@ export interface Media {
 
 export interface MediaDetails extends Media {
   overview?: string;
+  tagline: string;
+  release_date?: string;
 }
 
 export interface MediaApiModel {
@@ -29,4 +31,7 @@ export interface MediaApiModel {
   title?: string;
   vote_average?: number;
   name?: string;
+  tagline: string;
+  release_date?: string;
+  first_air_date?: string;
 }

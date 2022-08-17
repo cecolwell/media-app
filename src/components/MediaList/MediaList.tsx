@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { List, Card } from "antd";
 
@@ -11,9 +11,15 @@ import {
 import {
   getMediaDetailsAsync,
   getSimilarMediaAsync,
+  clearMediaDetails,
 } from "../../redux/mediaDetailsSlice";
+import {
+  BASE_IMAGE_URL,
+  LIST_IMAGE_WIDTH,
+  GRID_OPTIONS,
+} from "./MediaList.constants";
+import { convertRatingToPercentage } from "./MediaList.utils";
 import { Media, MediaType, MediaTypes } from "../../types/Media";
-import { BASE_IMAGE_URL, GRID_OPTIONS } from "./MediaList.constants";
 
 const { Meta } = Card;
 
@@ -24,6 +30,10 @@ export const MediaList = () => {
   const movies = useAppSelector(allMoviesSelector);
   const tvShows = useAppSelector(allTvShowsSelector);
   let pathname = useLocation().pathname.slice(1) as MediaType;
+
+  useEffect(() => {
+    dispatch(clearMediaDetails());
+  });
 
   const onClickHandler = (id?: number) => {
     dispatch(getMediaDetailsAsync({ mediaType: pathname, id }));
@@ -48,11 +58,14 @@ export const MediaList = () => {
                 cover={
                   <img
                     alt={media.title}
-                    src={`${BASE_IMAGE_URL}${media.poster_path}`}
+                    src={`${BASE_IMAGE_URL}${LIST_IMAGE_WIDTH}${media.poster_path}`}
                   />
                 }
               >
-                <Meta title={media.title} description={media.vote_average} />
+                <Meta
+                  title={media.title}
+                  description={convertRatingToPercentage(media.vote_average)}
+                />
               </Card>
             </List.Item>
           )}

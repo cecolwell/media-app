@@ -1,0 +1,32 @@
+.recommendationText {
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 16px;
+  margin-bottom: 8px;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+.scrollContainer {
+  display: flex;
+  overflow-x: scroll;
+  width: 99%;
+  align-self: center;
+}
+
+.similarCard {
+  flex-shrink: 0;
+  width: 300px;
+  border-radius: 10px;
+  margin-left: 10px !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.similarMediaTitle {
+  display: flex;
+  justify-content: space-between;
+}

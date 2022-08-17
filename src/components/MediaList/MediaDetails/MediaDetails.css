@@ -1,0 +1,32 @@
+.contentContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.contentDetails {
+  display: flex;
+  width: 50%;
+  flex-wrap: wrap;
+}
+
+.mediaTitle {
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.mediaRating {
+  margin-left: 5px;
+}
+
+.tagline {
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.mediaReleaseDate {
+  margin-left: 5px;
+  font-size: 22px;
+  font-weight: 100;
+}
