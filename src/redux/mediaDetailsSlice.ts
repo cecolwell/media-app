@@ -44,7 +44,6 @@ export const getMediaDetailsAsync = createAsyncThunk(
 export const getSimilarMediaAsync = createAsyncThunk(
   "mediaDetails/fetchSimilarMedia",
   async ({ mediaType, id }: { mediaType: MediaType; id?: number }) => {
-    console.log("mediaType", mediaType);
     const mediaResponse = await fetchSimilarMedia(mediaType, id);
     // The value we return becomes the `fulfilled` action payload
     const transformedSimilarMedia = toListView(mediaResponse.data.results);
