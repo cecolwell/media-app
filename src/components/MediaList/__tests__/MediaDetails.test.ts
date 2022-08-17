@@ -2,6 +2,7 @@ import {
   convertRatingToPercentage,
   getRatingBadgeColor,
   getReleaseYear,
+  getLastAirDateYear,
 } from "../MediaList.utils";
 
 describe("MediaList utils tests", () => {
@@ -35,6 +36,12 @@ describe("MediaList utils tests", () => {
     });
     it("should return N/A when there is no release date", () => {
       expect(getReleaseYear()).toBe("N/A");
+    });
+  });
+
+  describe("getLastAirDateYear()", () => {
+    it("should return only the year", () => {
+      expect(getLastAirDateYear("2022-10-4")).toBe("2022");
     });
   });
 });

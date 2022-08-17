@@ -23,6 +23,7 @@ export const initialState: MediaDetailsState = {
     overview: "",
     tagline: "",
     release_date: "",
+    last_air_date: "",
   },
   similarMedia: [],
   similarLoading: false,

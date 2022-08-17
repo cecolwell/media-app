@@ -9,6 +9,7 @@ import {
 import { BASE_IMAGE_URL, DETAILS_IMAGE_WIDTH } from "../MediaList.constants";
 import {
   convertRatingToPercentage,
+  getLastAirDateYear,
   getRatingBadgeColor,
   getReleaseYear,
 } from "../MediaList.utils";
@@ -44,7 +45,11 @@ export const MediaDetails = () => {
               <div className="mediaTitle">
                 {mediaDetails.title}
                 <span className="mediaReleaseDate">
-                  ({getReleaseYear(mediaDetails.release_date)})
+                  ({getReleaseYear(mediaDetails.release_date)}
+                  {mediaDetails.last_air_date
+                    ? ` - ${getLastAirDateYear(mediaDetails.last_air_date)}`
+                    : null}
+                  )
                 </span>
                 <div className="tagline">{mediaDetails.tagline}</div>
               </div>
