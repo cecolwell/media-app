@@ -15,7 +15,6 @@ export const MainMenu = () => {
   const pathname = useLocation().pathname.slice(1);
 
   const onClick = (e: any) => {
-    console.log("e.key", e.key);
     setCurrent(e.key);
     navigate(`/${e.key}`);
   };
@@ -25,16 +24,11 @@ export const MainMenu = () => {
   });
 
   useEffect(() => {
-    console.log("current", current);
-  }, [current]);
-
-  useEffect(() => {
     if (
       pathname &&
       pathname !== MediaTypes.MOVIE &&
       pathname !== MediaTypes.TVSHOW
     ) {
-      console.log(pathname);
       setCurrent(" ");
     } else if (!pathname) {
       setCurrent(MOVIES_TAB.key);
