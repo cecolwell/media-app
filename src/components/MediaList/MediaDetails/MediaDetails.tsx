@@ -1,6 +1,6 @@
 import React from "react";
 import { useAppSelector } from "../../../redux/hooks";
-import { Layout, Badge } from "antd";
+import { Layout, Badge, Spin } from "antd";
 import {
   loadingSelector,
   loadingSimilarSelector,
@@ -13,6 +13,7 @@ import {
   getReleaseYear,
 } from "../MediaList.utils";
 import { SimilarMedia } from "./SimilarMedia/SimilarMedia";
+import "../../../App.css";
 import "./MediaDetails.css";
 
 const { Content } = Layout;
@@ -24,7 +25,9 @@ export const MediaDetails = () => {
   return (
     <Layout>
       {loading || loadingSimilar ? (
-        "loading"
+        <div className="loading">
+          <Spin size="large" />
+        </div>
       ) : (
         <>
           <Content className="content contentContainer">

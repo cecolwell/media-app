@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { List, Card } from "antd";
+import { List, Card, Spin } from "antd";
 
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import {
@@ -20,6 +20,7 @@ import {
 } from "./MediaList.constants";
 import { convertRatingToPercentage } from "./MediaList.utils";
 import { Media, MediaType, MediaTypes } from "../../types/Media";
+import "../../App.css";
 
 const { Meta } = Card;
 
@@ -43,7 +44,9 @@ export const MediaList = () => {
   return (
     <div>
       {loading ? (
-        "loading"
+        <div className="loading">
+          <Spin size="large" />
+        </div>
       ) : (
         <List
           grid={GRID_OPTIONS}
